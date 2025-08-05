@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Table Tennis Score Keeper</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <div class="img-container">
+      <img src="lisa-keffer-i0kB5B9J8Ds-unsplash.jpg" 
+           alt="Table Tennis" 
+           class="img" />
+    </div>
+    <div class="content">
+      <h1> ScoreKeeper</h1>
+      <div id="scores" class="score-display">
+        <span id="p1sD">0</span> - <span id="p2sD">0</span>
+      </div>
+      <div class="button-group">
+        <button id="p1score">Player 1 Score</button>
+        <button id="p2score">Player 2 Score</button>
+        <button id="reset">Reset</button>
+      </div>
+      <div class="set-score-group">
+        <label for="set-score">Winning Score:</label>
+        <select id="set-score" title="Set Score">
+          <option value="3">3</option>
+          <option value="5" selected>5</option>
+          <option value="7">7</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <script src="score.js"></script>
+</body>
+</html>
