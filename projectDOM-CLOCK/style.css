@@ -1,0 +1,196 @@
+ :root {
+    --bg-color: #f5f7fa;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --toggle-bg: #ffffff;
+    --toggle-icon: #374151;
+    --card-clock-bg: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --card-clock-text: #ffffff;
+    --card-clock-label: rgba(255, 255, 255, 0.8);
+    --card-stopwatch-bg: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+    --display-bg: rgba(255, 255, 255, 0.2);
+    --display-border: rgba(255, 255, 255, 0.4);
+    --display-text: #ffffff;
+    --display-ms-text: rgba(255, 255, 255, 0.8);
+    --btn-text: #ffffff;
+    --btn-start-bg: #10b981;
+    --btn-stop-bg: #ef4444;
+    --btn-reset-bg: #6b7280;
+}
+
+.darkmode {
+    --bg-color: #0f172a;
+    --text-primary: #e2e8f0;
+    --text-secondary: #94a3b8;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --toggle-bg: #1e293b;
+    --toggle-icon: #ffffff;
+    --card-clock-bg: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    --card-clock-text: #facc15;
+    --card-clock-label: rgba(250, 204, 21, 0.8);
+    --card-stopwatch-bg: linear-gradient(135deg, #9333ea 0%, #a855f7 100%);
+    --display-bg: rgba(255, 255, 255, 0.15);
+    --display-border: rgba(255, 255, 255, 0.3);
+    --display-text: #f3f4f6;
+    --display-ms-text: rgba(243, 244, 246, 0.8);
+    --btn-start-bg: #22c55e;
+    --btn-stop-bg: #f97316;
+    --btn-reset-bg: #475569;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background: var(--bg-color);
+    color: var(--text-primary);
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+#main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    gap: 40px;
+
+    width: 100%;
+    max-width: 500px;
+}
+
+section {
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+section:hover { transform: translateY(-5px); }
+
+.switch {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--toggle-bg);
+    box-shadow: 0 4px 10px var(--shadow-color);
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease, transform 0.6s ease;
+}
+.switch:hover { transform: scale(1.1) rotate(20deg); }
+.switch svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--toggle-icon);
+    transition: fill 0.3s ease;
+}
+.sun-icon { display: block; }
+.moon-icon { display: none; }
+.darkmode .sun-icon { display: none; }
+.darkmode .moon-icon { display: block; }
+
+.clock-container {
+    background: var(--card-clock-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.c-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+.c-box span {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2rem, 8vw, 3rem);
+    font-weight: 700;
+    color: var(--card-clock-text);
+    min-width: 3.5rem;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+.c-box span[id]::after {
+    display: block;
+    margin-top: 5px;
+    font-family: 'Roboto', sans-serif;
+    color: var(--card-clock-label);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+#hrs::after { content: 'Hours'; }
+#mins::after { content: 'Minutes'; }
+#secs::after { content: 'Seconds'; }
+
+.stopwatch-container {
+    background: var(--card-stopwatch-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+.stopwatch-display {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2.5rem, 12vw, 3.5rem);
+    color: var(--display-text);
+    background: var(--display-bg);
+    padding: 15px 25px;
+    border-radius: 15px;
+    border: 2px solid var(--display-border);
+    width: 100%;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.stopwatch-display .milliseconds {
+    font-size: clamp(1rem, 5vw, 1.5rem);
+    color: var(--display-ms-text);
+}
+.stopwatch-controls {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.stopwatch-controls button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--btn-text);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+#startBtn { background: var(--btn-start-bg); }
+#stopBtn { background: var(--btn-stop-bg); }
+#resetBtn { background: var(--btn-reset-bg); }
+.stopwatch-controls button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+.stopwatch-controls button:active { transform: translateY(0); filter: brightness(0.9); }
+.stopwatch-controls button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: translateY(0);
+    filter: none;
+    box-shadow: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
