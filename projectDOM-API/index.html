@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Generators</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1>API Fun House</h1>
+            <p> Random quotes, memes, and jokes!</p>
+        </header>
+
+    
+        <div class="grid">
+
+            <!-- 1. Random Quote Generator -->
+            <div class="generator-card">
+                <div>
+                    <h2 class="heading blue">Random Quote</h2>
+                    <div id="quote-content" class="content italic">
+                        <div class="loader"></div>
+                    </div>
+                </div>
+                <button id="new-quote-btn" class="action-btn blue-btn">
+                    Get New Quote
+                </button>
+            </div>
+
+            <!-- 2. Random Meme Generator -->
+            <div class="generator-card">
+                <div>
+                    <h2 class="heading purple">Random Meme</h2>
+                    <div id="meme-content" class="content">
+                        <div class="loader"></div>
+                    </div>
+                </div>
+                <button id="new-meme-btn" class="action-btn purple-btn">
+                    Get New Meme
+                </button>
+            </div>
+
+            
+            <div class="generator-card">
+                <div>
+                    <h2 class="heading green">Random Joke</h2>
+                    <div id="joke-content" class="content center">
+                        <div class="loader"></div>
+                    </div>
+                </div>
+                <button id="new-joke-btn" class="action-btn green-btn">
+                    Get New Joke
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
