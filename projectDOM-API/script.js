@@ -12,10 +12,9 @@ function getQuote() {
 
     fetch("https://thequoteshub.com/api/")
         .then(function(response) {
-            return response.json(); // Convert to JSON
+            return response.json(); 
         })
         .then(function(data) {
-            // API returns an array with objects like: [{quote: "...", author: "..."}]
             var quote = data.text;
             var author = data.author;
             quoteContent.innerHTML = `"${quote}"<br><br>- ${author}`;
